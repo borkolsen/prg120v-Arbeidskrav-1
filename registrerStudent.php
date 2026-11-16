@@ -15,7 +15,14 @@ if (isset($_POST["brukernavn"]))
 
     $sqlSetning="INSERT INTO student VALUES('$brukernavn','$fornavn','$etternavn','$klassekode')";
     
-    mysqli_query($db,$sqlSetning);
+    if (mysqli_query($db,$sqlSetning))
+    {
+        $melding = "Studenten ble registrert";
+    }
+    else
+    {
+        $melding = "Brukernavnet finnes allerede";
+    }
 }
 
 ?>
@@ -30,6 +37,15 @@ if (isset($_POST["brukernavn"]))
 <body>
 
 <h1>Registrer student</h1>
+
+<?php
+
+if (isset($melding))
+{
+    print($melding);
+}
+
+?>
 
 <form method="post">
 

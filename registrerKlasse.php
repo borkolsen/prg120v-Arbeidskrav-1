@@ -10,7 +10,14 @@ if (isset($_POST["klassekode"]))
 
     $sqlSetning="INSERT INTO klasse VALUES('$klassekode','$klassenavn','$studiumkode')";
     
-    mysqli_query($db,$sqlSetning);
+    if (mysqli_query($db,$sqlSetning))
+    {
+        $melding = "Klassen ble registrert";
+    }
+    else
+    {
+        $melding = "Klassekoden finnes allerede";
+    }
 }
 
 ?>
@@ -25,6 +32,15 @@ if (isset($_POST["klassekode"]))
 <body>
 
 <h1>Registrer klasse</h1>
+
+<?php
+
+if (isset($melding))
+{
+    print($melding);
+}
+
+?>
 
 <form method="post">
 
