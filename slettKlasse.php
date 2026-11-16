@@ -8,7 +8,7 @@ if (isset($_POST["klassekode"]))
 
     $sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode'";
     
-   if (!mysqli_query($db,$sqlSetning))
+   if (mysqli_query($db,$sqlSetning))
    {
        $melding = "Klassen ble slettet";
    }
