@@ -50,6 +50,15 @@ while ($rad=mysqli_fetch_array($sqlResultat))
 
 </select>
 
+<?php
+
+if (isset($melding))
+{
+    print($melding);
+}
+
+?>
+
 <br><br>
 
 <input type="submit" value="Slett" onclick="return confirm('Er du sikker på at du vil slette denne studenten?')">
