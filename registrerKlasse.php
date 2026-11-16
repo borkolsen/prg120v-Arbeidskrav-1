@@ -10,11 +10,13 @@ if (isset($_POST["klassekode"]))
 
     $sqlSetning="INSERT INTO klasse VALUES('$klassekode','$klassenavn','$studiumkode')";
     
-    if (mysqli_query($db,$sqlSetning))
+    try
     {
+        mysqli_query($db,$sqlSetning);
+        
         $melding = "Klassen ble registrert";
     }
-    else
+    catch (mysqli_sql_exception $e)
     {
         $melding = "Klassekoden finnes allerede";
     }

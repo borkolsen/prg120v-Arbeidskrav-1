@@ -8,11 +8,13 @@ if (isset($_POST["klassekode"]))
 
     $sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode'";
     
-   if (mysqli_query($db,$sqlSetning))
+   try
    {
+         mysqli_query($db,$sqlSetning);
+
        $melding = "Klassen ble slettet";
    }
-   else
+   catch (mysqli_sql_exception $e)
    {
        $melding = "Klassen kan ikke slettes fordi den har studenter";
    }
