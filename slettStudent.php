@@ -8,7 +8,10 @@ if (isset($_POST["brukernavn"]))
 
     $sqlSetning="DELETE FROM student WHERE brukernavn='$brukernavn'";
     
-    mysqli_query($db,$sqlSetning) or die ("ikke mulig å slette data fra databasen");
+   if (mysqli_query($db,$sqlSetning))
+   {
+       $melding = "Studenten ble slettet";
+   }
 }
 
 $sqlSetning="SELECT * FROM student";
