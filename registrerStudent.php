@@ -2,6 +2,10 @@
 
 include ("db-tilkobling.php");
 
+$sqlSetning="SELECT * FROM klasse";
+
+$sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig å hente data fra databasen");
+
 if (isset($_POST["brukernavn"]))
 {
     $brukernavn = $_POST["brukernavn"];
@@ -41,7 +45,22 @@ Etternavn: <input type="text" name="etternavn">
 
 <br><br>
 
-Klassekode: <input type="text" name="klassekode">
+Klassekode:
+
+<select name="klassekode">
+
+<?php
+
+while ($rad=mysqli_fetch_array($sqlResultat))
+{
+    print("<option value='$rad[klassekode]'>");
+    print($rad["klassekode"]);
+    print("</option>");
+}
+
+?>
+
+</select>
 
 <br><br>
 

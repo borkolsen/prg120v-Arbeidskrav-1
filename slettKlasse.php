@@ -51,7 +51,7 @@ while ($rad=mysqli_fetch_array($sqlResultat))
 
 <br><br>
 
-<input type="submit" value="Slett">
+<input type="submit" value="Slett" onclick="return confirm('Er du sikker på at du vil slette denne klassen?')">
 
 </form>
 
